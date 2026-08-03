@@ -1,0 +1,18 @@
+[Unit]
+Description=REBORN Discord bot and linking service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=reborn
+WorkingDirectory=/opt/reborn-bot
+EnvironmentFile=/etc/reborn-bot.env
+ExecStart=/opt/reborn-bot/venv/bin/python bot.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
